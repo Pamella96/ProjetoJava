@@ -58,6 +58,10 @@ public class Aluno implements Serializable {
         this.curso = curso;
     }
 
+    public String[] toArray() {
+        return new String[]{nome, matricula, telefone, curso};
+    }
+
 
     @Override
     public String toString() {
