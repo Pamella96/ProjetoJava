@@ -84,7 +84,23 @@ public class LoginGUI {
         return new String(campoSenha.getPassword());
     }
 
-    // métodos para adicionar ActionListeners aos botões
-    public void
+    // métodos para configurar ActionListeners aos botões
+    public void setBotaoEntrarListener(ActionListener listener) {
+        botaoEntrar.addActionListener(listener);
+    }
+    public void setBotaoLimparListener(ActionListener listener) {
+        botaoLimpar.addActionListener(listener);
+    }
+
+    //limpar campos de login e senha
+    public void limparCampos() {
+        campoLogin.setText("");
+        campoSenha.setText("");
+    }
+
+    //exiber mensagem de erro
+    public void exibirMensagemErro(String mensagem) {
+        JOptionPane.showMessageDialog(this, mensagem, "Erro", JOptionPane.ERROR_MESSAGE);
+
 
 }
