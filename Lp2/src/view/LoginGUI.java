@@ -1,106 +1,59 @@
 package view;
+
+import controller.LoginController;
+
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionListener;
 
-public class LoginGUI {
-    private JTextField campoLogin;
-    private JPasswordField campoSenha;
-    private JButton botaoEntrar;
-    private JButton botaoLimpar;
+/**
+ * Tela de login do sistema.
+ */
+public class LoginGUI extends JFrame {
 
-    public LoginGUI(){
-        configurarTela();
-        inicializarComponentes();
+    private JTextField txtLogin;
+    private JPasswordField txtSenha;
+    private LoginController controller;
+
+    public LoginGUI() {
+        super("Login");
+        controller = new LoginController(this);
+
+        setLayout(null);
+        setSize(300, 200);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        JLabel l1 = new JLabel("Login:");
+        l1.setBounds(20, 20, 80, 25);
+        add(l1);
+
+        txtLogin = new JTextField();
+        txtLogin.setBounds(100, 20, 150, 25);
+        add(txtLogin);
+
+        JLabel l2 = new JLabel("Senha:");
+        l2.setBounds(20, 60, 80, 25);
+        add(l2);
+
+        txtSenha = new JPasswordField();
+        txtSenha.setBounds(100, 60, 150, 25);
+        add(txtSenha);
+
+        JButton btnEntrar = new JButton("Entrar");
+        btnEntrar.setBounds(40, 110, 90, 30);
+        btnEntrar.addActionListener(e ->
+            controller.autenticar(txtLogin.getText(), new String(txtSenha.getPassword()))
+        );
+        add(btnEntrar);
+
+        JButton btnLimpar = new JButton("Limpar");
+        btnLimpar.setBounds(150, 110, 90, 30);
+        btnLimpar.addActionListener(e -> {
+            txtLogin.setText("");
+            txtSenha.setText("");
+        });
+        add(btnLimpar);
     }
 
-    private void configurarTela(){
-       setTitle("Sistema de Gerenciamento de Alunos - Login");
-       setSize(300, 200);
-       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-       setLocationRelativeTo(null);
-       setResizable(false);
+    public void mostrarMensagem(String msg) {
+        JOptionPane.showMessageDialog(this, msg);
     }
-
-    // Inicialização adicional dos componentes, se necessário
-    
-    private void inicializarComponentes(){
-        JPanel painel = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 5, 5, 5);
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-
-        //Título
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.gridwidth = 2;
-        JLabel titulo = new JLabel("Login do sistema", JLabel.CENTER);
-        titulo.setFont(new Font("Arial", Font.BOLD, 16));
-        panel.add(titulo, gbc);
-
-        // Label e Campo de Login
-        gbc.gridwidth = 1;
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        painel.add(new JLabel("Login:"), gbc);
-        
-        gbc.gridx = 1;
-        gbc.gridy = 1;
-        campoLogin = new JTextField(15);
-        painel.add(campoLogin, gbc);
-
-        // Label e Campo de Senha
-        gbc.gridx = 0;
-        gbc.gridy = 2;
-        painel.add(new JLabel("Senha:"), gbc);
-
-        gbc.gridx = 1;
-        gbc.gridy = 2;
-        campoSenha = new JPasswordField(15);
-        painel.add(campoSenha, gbc);
-
-        //Painel de botoes
-        gbc.gridx = 0;
-        gbc.gridy = 3;
-        gbc.gridwidth = 2;
-        JPanel painelBotoes = new JPanel(new FlowLayout());
-
-        botaoEntrar = new JButton("Entrar");
-        botaoLimpar = new JButton("Limpar");
-
-        painelBotoes.add(botaoEntrar);
-        painelBotoes.add(botaoLimpar);
-        painel.add(painelBotoes, gbc);
-        add(painel);
-
-    }
-
-    // metodos para acesso aos componentes
-    public String getLogin() {
-        return campoLogin.getText();
-    }
-    
-    public String getSenha() {
-        return new String(campoSenha.getPassword());
-    }
-
-    // métodos para configurar ActionListeners aos botões
-    public void setBotaoEntrarListener(ActionListener listener) {
-        botaoEntrar.addActionListener(listener);
-    }
-    public void setBotaoLimparListener(ActionListener listener) {
-        botaoLimpar.addActionListener(listener);
-    }
-
-    //limpar campos de login e senha
-    public void limparCampos() {
-        campoLogin.setText("");
-        campoSenha.setText("");
-    }
-
-    //exiber mensagem de erro
-    public void exibirMensagemErro(String mensagem) {
-        JOptionPane.showMessageDialog(this, mensagem, "Erro", JOptionPane.ERROR_MESSAGE);
-
-
 }
