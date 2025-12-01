@@ -1,10 +1,6 @@
-package model;
+package projeto9.src.model;
 
-/**
- * Classe que representa um aluno do sistema.
- */
 public class Aluno {
-
     private String nome;
     private String matricula;
     private String telefone;
@@ -21,5 +17,14 @@ public class Aluno {
     public String getMatricula() { return matricula; }
     public String getTelefone() { return telefone; }
     public String getCurso() { return curso; }
-
+    
+    @Override
+    public String toString() {
+        return "Aluno{" +
+               "nome='" + nome + '\'' +
+               ", matricula='" + matricula + '\'' +
+               ", telefone='" + telefone + '\'' +
+               ", curso='" + curso + '\'' +
+               '}';
+    }
 }
