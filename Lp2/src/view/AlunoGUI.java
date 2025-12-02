@@ -13,7 +13,7 @@ public class AlunoGUI extends JFrame {
     public JTextField txtNome;
     public JTextField txtMatricula;
     public JTextField txtTelefone;
-    public JComboBox<String> cmbCurso;
+    public JComboBox<String> cmbCurso;  //lista suspensa/drop-down list
     public JTable tabela;
 
     private AlunoController controller;
@@ -72,11 +72,11 @@ public class AlunoGUI extends JFrame {
         add(btnEnviar);
 
         tabela = new JTable(new DefaultTableModel(
-                new Object[][]{},
+                new Object[][]{}, //vetor de vetores de objetos, cada vetor representa uma linha da tabela e os objetos são os valores das colunas
                 new String[]{"Nome", "Matrícula", "Telefone", "Curso"}
         ));
 
-        JScrollPane scroll = new JScrollPane(tabela);
+        JScrollPane scroll = new JScrollPane(tabela); //adiciona barra de rolagem à tabela se necessário ou ultrapassar o tamanho da área visível
         scroll.setBounds(20, 200, 540, 140);
         add(scroll);
 

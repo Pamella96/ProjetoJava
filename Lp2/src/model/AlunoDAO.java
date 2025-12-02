@@ -4,9 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/**
- * Classe responsável por armazenar e salvar alunos.
- */
+//Classe responsável por armazenar e salvar alunos.
 public class AlunoDAO {
 
     private ArrayList<Aluno> alunos = new ArrayList<>();
