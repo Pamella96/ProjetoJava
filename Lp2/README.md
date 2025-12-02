@@ -84,6 +84,24 @@ Get-ChildItem -Path . -Recurse -Filter AlunoController.class | Select-Object Ful
 
 - Se usar IDE (Eclipse/IntelliJ), prefira a configuração de "Build Automatically" ou faça `Build -> Rebuild Project`.
 
+## Arquivo de persistência (alunos.txt)
+
+- O arquivo usado para armazenar os alunos é `alunos.txt` na raiz do projeto (diretório de trabalho). Exemplo:
+
+```
+C:\Users\Windows 10\Desktop\lp2-teste\ProjetoJava\Lp2\alunos.txt
+```
+
+- Observação importante: não mantenha cópias do `alunos.txt` dentro de `src/` (por exemplo `src/alunos.txt`). Se existir um `alunos.txt` dentro de `src`, a presença de múltiplos arquivos pode confundir sobre qual arquivo está sendo atualizado. Recomenda-se remover qualquer cópia dentro de `src` e manter apenas a cópia na raiz.
+
+>- Para remover o arquivo duplicado dentro de `src`, você pode executar no PowerShell (na pasta do projeto):
+
+```powershell
+Remove-Item -Path .\src\alunos.txt -Force -ErrorAction SilentlyContinue
+```
+
+Depois dessa limpeza, o DAO passa a carregar e salvar sempre o arquivo `./alunos.txt` (na raiz do projeto).
+
 
 ## Estrutura de arquivos alterados nesta sessão
 

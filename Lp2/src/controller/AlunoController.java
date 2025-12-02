@@ -39,6 +39,8 @@ public class AlunoController {
         //criação do objeto e persistencia
         Aluno a = new Aluno(nome, mat, tel, curso);
         dao.adicionar(a); //esse metodo adiciona o aluno na lista interna do DAO
+    // persiste imediatamente em arquivo para evitar perda de dados se o app for fechado
+    dao.salvarEmArquivo();
 
         atualizarTabela();
 
